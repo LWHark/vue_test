@@ -2,8 +2,8 @@
     <div id="root">
         <div class="todo-container">
             <div class="todo-wrap">
-                <MyHeader/>
-                <MyList :todoList="todoList"/>
+                <MyHeader :addTodo="addTodo"/>
+                <MyList :todoList="todoList" :checkTodo="checkTodo"/>
                 <MyFooter/>
             </div>
         </div>
@@ -38,6 +38,20 @@ export default {
                 }
             ]
         };
+    },
+
+    methods:{
+        addTodo(todoObj){
+            this.todoList.unshift(todoObj);
+        },
+        checkTodo(id){
+            console.log(id);
+            this.todoList.forEach(td => {
+                if(td.id === id){
+                    td.checked = !td.checked;
+                }
+            });
+        }
     },
 
     components:{

@@ -1,7 +1,7 @@
 <template>
     <li>
         <label>
-            <input type="checkbox"/>
+            <input type="checkbox" :checked="todo.checked" @change="checkTodo(todo.id)"/>
             <span>{{todo.title}}</span>
         </label>
     </li>
@@ -11,7 +11,7 @@
 export default {
     name: 'MyItem',
 
-    props:['todo']
+    props:['todo','checkTodo']
 };
 </script>
 

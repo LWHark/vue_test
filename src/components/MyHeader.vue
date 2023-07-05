@@ -1,26 +1,30 @@
 <template>
     <div>
-        <input type="text"/>
+        <input type="text" placeholder="请输入" v-model="title" @keyup.enter="add"/>
     </div>
 </template>
 
 <script>
+import {nanoid} from 'nanoid'
+
 export default {
     name: 'MyHeader',
 
     data() {
         return {
-            
+            title:'',
         };
     },
 
-    mounted() {
-        
+    methods:{
+        add(){
+            const todo = {id:nanoid(),title:this.title,checked:false};
+            this.addTodo(todo);
+            this.title = '';
+        }
     },
 
-    methods: {
-        
-    },
+    props:['addTodo']
 };
 </script>
 
